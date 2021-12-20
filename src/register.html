@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="text/javascript" src="./public/registerCheck.js"></script>
+    <title>Register - GTWFin</title>
+</head>
+
+<body>
+    <div class="container whole-page">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-sm-4">
+                <div class="logreg-form">
+                    <form autocomplete="off" action='/signUp' method='POST'>
+                        <div id="register-error"></div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username"
+                                aria-describedby="username-message" placeholder="Enter your username" required>
+                            <div id="username-message" class="form-text"></div>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirm-password" name="confirm-password"
+                                aria-describedby="password-message" placeholder="Confirm your password" required>
+                            <div id="password-message" class="form-text"></div>
+                        </div>
+                        <div class="row justify-content-even align-items-center mt-3">
+                            <div class="col-sm-3">
+                                <button type="submit" class="btn btn-primary" id="signUpBTN">Sign Up</button>
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="/login">Log In</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
