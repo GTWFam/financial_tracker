@@ -1,0 +1,36 @@
+{
+  "name": "a4-components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "snow_start": "snowpack dev",
+    "build": "snowpack build",
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.2",
+    "method-override": "^3.0.0",
+    "mongodb": "^4.1.2",
+    "nodemon": "^2.0.12",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.0.0-rc.0",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "snowpack": "^3.8.8"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
