@@ -4,6 +4,7 @@ import {removeEntry, openAddForm} from "./public/editData.js";
 class MonthTab extends React.Component {
   render() {
     const {month, data} = this.props;
+    let total = 0;
     return /* @__PURE__ */ React.createElement(Table, {
       bordered: true,
       size: "md"
@@ -17,8 +18,9 @@ class MonthTab extends React.Component {
       onClick: () => openAddForm(month)
     }, /* @__PURE__ */ React.createElement("span", {
       class: "fas fa-plus-circle fa-lg",
-      "aria-hiddne": "true"
+      "aria-hidden": "true"
     }))))), /* @__PURE__ */ React.createElement("tbody", null, data.map((entry) => {
+      total += parseInt(entry.amount);
       let rowColor = "success";
       if (entry.amount < 0) {
         rowColor = "danger";
@@ -32,9 +34,12 @@ class MonthTab extends React.Component {
         variant: "danger"
       }, /* @__PURE__ */ React.createElement("span", {
         class: "fas fa-times-circle fa-lg add-entry",
-        "aria-hiddne": "true"
+        "aria-hidden": "true"
       }))));
-    })));
+    }), /* @__PURE__ */ React.createElement("tr", {
+      className: `align-middle last-row ${total < 0 ? "danger" : "success"}`,
+      height: "40"
+    }, /* @__PURE__ */ React.createElement("td", null, "Total"), /* @__PURE__ */ React.createElement("td", null, total, "$"), /* @__PURE__ */ React.createElement("td", null), /* @__PURE__ */ React.createElement("td", null))));
   }
 }
 export default MonthTab;

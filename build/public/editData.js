@@ -20,18 +20,12 @@ export function openAddForm(month) {
     $('input#month').val(month);
     $('input#id').val(userID);
     if ($('#addEntryOverlay').hasClass('closed')) {
-        $('#addEntryOverlay').css('display', 'block');
-        setTimeout(() => {
-            $('#addEntryOverlay')
-                .removeClass('closed')
-                .addClass('opened')
-        }, 500)
+        $('#addEntryOverlay')
+            .removeClass('closed')
+            .addClass('opened');
     } else {
         $('#addEntryOverlay')
             .removeClass('opened')
             .addClass('closed');
-        setTimeout(() => {
-            $('#addEntryOverlay').css('display', 'none');
-        }, 1200)
     }
 }
