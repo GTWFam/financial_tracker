@@ -4,6 +4,7 @@ import MonthTab from "./MonthTab.js";
 class Months extends React.Component {
   render() {
     const {entries} = this.props;
+    console.log(entries);
     let allMonths = [
       "January",
       "February",
@@ -18,13 +19,14 @@ class Months extends React.Component {
       "November",
       "December"
     ];
+    let currentMonth = allMonths[new Date().getMonth()];
     return /* @__PURE__ */ React.createElement(Tabs, {
       transition: Fade,
-      defaultActiveKey: "October",
+      defaultActiveKey: currentMonth,
       id: "months",
       className: "mb-3 justify-content-md-center text-center"
-    }, allMonths.map((month) => {
-      let monthEntries = entries.filter((entry) => entry.month == month);
+    }, allMonths.map((month, index) => {
+      let monthEntries = entries[index];
       return /* @__PURE__ */ React.createElement(Tab, {
         eventKey: month,
         title: month

@@ -25,6 +25,7 @@ class MonthTab extends React.Component {
         </thead>
         <tbody>
           {data.map((entry) => {
+            console.log(entry);
             total += parseInt(entry.amount);
             let rowColor = "success";
             if (entry.amount < 0) {

@@ -29,34 +29,42 @@ class App extends React.Component {
 
   render() {
     const { username, entries } = this.state;
-    return (
-      <>
-        <Container className="mt-5 md-3">
-          <Row className="justify-content-md-center text-center">
-            <Col>
-              <h1>Welcome to GTWFin, {username}</h1>
-            </Col>
-            <Col></Col>
-          </Row>
-          <Row className="justify-content-md-center text-center">
-            <Col>
-              <Months entries={entries} />
-            </Col>
-          </Row>
-        </Container>
-        <Form
-          id="logout-btn"
-          className="top-right"
-          action="/logout?_method=DELETE"
-          method="POST"
-        >
-          <Button variant="primary" type="submit">
-            Logout
-          </Button>
-        </Form>
-        <AddForm />
-      </>
-    );
+    if (username == "") {
+      return (
+        <>
+          <h1>Loading...</h1>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Container className="mt-5 md-3">
+            <Row className="justify-content-md-center text-center">
+              <Col>
+                <h1>Welcome to GTWFin, {username}</h1>
+              </Col>
+              <Col></Col>
+            </Row>
+            <Row className="justify-content-md-center text-center">
+              <Col>
+                <Months entries={entries} />
+              </Col>
+            </Row>
+          </Container>
+          <Form
+            id="logout-btn"
+            className="top-right"
+            action="/logout?_method=DELETE"
+            method="POST"
+          >
+            <Button variant="primary" type="submit">
+              Logout
+            </Button>
+          </Form>
+          <AddForm />
+        </>
+      );
+    }
   }
 }
 

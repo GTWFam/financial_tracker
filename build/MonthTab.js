@@ -20,6 +20,7 @@ class MonthTab extends React.Component {
       class: "fas fa-plus-circle fa-lg",
       "aria-hidden": "true"
     }))))), /* @__PURE__ */ React.createElement("tbody", null, data.map((entry) => {
+      console.log(entry);
       total += parseInt(entry.amount);
       let rowColor = "success";
       if (entry.amount < 0) {

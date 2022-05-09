@@ -144,7 +144,20 @@ app.post("/signUp", async (req, res) => {
     collection.insertOne({
       username: req.body.username,
       password: req.body.password,
-      entries: [],
+      entries: [
+        [], // Jan
+        [], // Feb
+        [], // Mar
+        [], // Apr
+        [], // May
+        [], // Jun
+        [], // Jul
+        [], // Aug
+        [], // Sep
+        [], // Oct
+        [], // Nov
+        [], // Dec
+      ],
     });
     return res.redirect("/");
   } catch (e) {
@@ -181,9 +194,9 @@ app.get("/getUserData", async (req, res) => {
 
 app.post("/addEntry", async (req, res) => {
   let users = await collection.find({ _id: ObjectId(req.body.id) }).toArray();
+  let m = new Date(Date.parse(req.body.month + "1, 2022")).getMonth();
   let userEntries = users[0].entries;
-  userEntries.push({
-    month: req.body.month,
+  userEntries[m].push({
     from: req.body.from,
     amount: req.body.amount,
     category: req.body.category,
@@ -210,22 +223,21 @@ app.post("/removeEntry", async (req, res) => {
     req.query.category
   );
   let users = await collection.find({ _id: ObjectId(req.query.id) }).toArray();
+  let m = new Date(Date.parse(req.body.month + "1, 2022")).getMonth();
   let userEntries = users[0].entries;
   let entry = {
-    month: req.query.month,
     from: req.query.from,
     amount: req.query.amount,
     category: req.query.category,
   };
-  let index = userEntries.findIndex((e) => {
+  let index = userEntries[m].findIndex((e) => {
     return (
-      e.month === entry.month &&
       e.from === entry.from &&
       e.amount === entry.amount &&
       e.category === entry.category
     );
   });
-  userEntries.splice(index, 1);
+  userEntries[m].splice(index, 1);
   try {
     collection.updateOne(
       { _id: ObjectId(req.query.id) },
