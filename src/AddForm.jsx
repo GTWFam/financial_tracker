@@ -1,54 +1,117 @@
 import React from "react";
-import { Container, Form, Row, Button, Col } from "react-bootstrap";
-import { openAddForm } from "./public/editData";
+import {
+  Container,
+  Form,
+  Row,
+  Button,
+  Col,
+  Tabs,
+  Tab,
+  Fade,
+} from "react-bootstrap";
+import { openAddForm } from "./public/scripts/editData";
 
 class AddForm extends React.Component {
   render() {
+    const { categories } = this.props;
     return (
       <Container className="whole-page closed" id="addEntryOverlay">
         <Row className="justify-content-md-center align-items-md-center h-100">
           <Col sm={4}>
-            <Form autoComplete="off" action="/addEntry" method="POST">
-              <Form.Group className="hidden" controlId="id">
-                <Form.Label>User ID</Form.Label>
-                <Form.Control readOnly name="id"></Form.Control>
-              </Form.Group>
-              <Form.Group controlId="month">
-                <Form.Label>Which month</Form.Label>
-                <Form.Control readOnly name="month"></Form.Control>
-              </Form.Group>
-              <Form.Group controlId="from">
-                <Form.Label>From where</Form.Label>
-                <Form.Control name="from"></Form.Control>
-              </Form.Group>
-              <Form.Group controlId="amount">
-                <Form.Label>How much</Form.Label>
-                <Form.Control name="amount"></Form.Control>
-              </Form.Group>
-              <Form.Group controlId="category">
-                <Form.Label>What category</Form.Label>
-                <Form.Control name="category"></Form.Control>
-              </Form.Group>
-              <Row className="justify-content-md-start mt-3">
-                <Col sm={5}>
-                  <Button variant="primary" type="submit">
-                    Add Transaction
-                  </Button>
-                </Col>
-                <Col sm={5}>
-                  <Button
-                    variant="link"
-                    href="#"
-                    onClick={() => {
-                      openAddForm("January");
-                      return false;
-                    }}
-                  >
-                    Close Form
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
+            <Tabs
+              transition={Fade}
+              defaultActiveKey="transaction"
+              id="addition"
+              className="mb-3 justify-content-md-center text-center"
+            >
+              <Tab eventKey="transaction" title="Transaction">
+                <Form autoComplete="off" action="/addEntry" method="POST">
+                  <Form.Group className="hidden" controlId="id">
+                    <Form.Label>User ID</Form.Label>
+                    <Form.Control readOnly name="id"></Form.Control>
+                  </Form.Group>
+                  <Form.Group className="hidden" controlId="month">
+                    <Form.Label>Which month</Form.Label>
+                    <Form.Control readOnly name="month"></Form.Control>
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>When</Form.Label>
+                    <Form.Control
+                      type="date"
+                      name="date"
+                      placeholder="Date of Transaction"
+                      value={new Date()}
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="from">
+                    <Form.Label>From where</Form.Label>
+                    <Form.Control name="from"></Form.Control>
+                  </Form.Group>
+                  <Form.Group controlId="amount">
+                    <Form.Label>How much</Form.Label>
+                    <Form.Control name="amount"></Form.Control>
+                  </Form.Group>
+                  <Form.Group controlId="category">
+                    <Form.Label>Which category</Form.Label>
+                    <Form.Select name="category">
+                      {categories.map((category) => {
+                        return <option value={category}>{category}</option>;
+                      })}
+                    </Form.Select>
+                  </Form.Group>
+                  <Row className="justify-content-md-start mt-3">
+                    <Col sm={5}>
+                      <Button variant="primary" type="submit">
+                        Add Transaction
+                      </Button>
+                    </Col>
+                    <Col sm={5}>
+                      <Button
+                        variant="link"
+                        href="#"
+                        onClick={() => {
+                          openAddForm("January");
+                          return false;
+                        }}
+                      >
+                        Close Form
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form>
+              </Tab>
+              <Tab eventKey="category" title="Category">
+                <Form autoComplete="off" action="/addCategory" method="POST">
+                  <Form.Group className="hidden" controlId="id">
+                    <Form.Label>User ID</Form.Label>
+                    <Form.Control readOnly name="id"></Form.Control>
+                  </Form.Group>
+                  <Form.Group controlId="addCategory">
+                    <Form.Label>Category Name</Form.Label>
+                    <Form.Control name="addCategory"></Form.Control>
+                  </Form.Group>
+                  <Row className="justify-content-md-start mt-3">
+                    <Col sm={5}>
+                      <Button variant="primary" type="submit">
+                        Add Category
+                      </Button>
+                    </Col>
+                    <Col sm={5}>
+                      <Button
+                        variant="link"
+                        href="#"
+                        onClick={() => {
+                          openAddForm("January");
+                          return false;
+                        }}
+                      >
+                        Close Form
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form>
+              </Tab>
+            </Tabs>
           </Col>
         </Row>
       </Container>

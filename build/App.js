@@ -7,7 +7,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       username: "",
-      entries: []
+      entries: [],
+      categories: []
     };
     this.load();
   }
@@ -17,12 +18,13 @@ class App extends React.Component {
     fetch(`/getUserData?id=${userID}`, {method: "get", "no-cors": true}).then((res) => res.json()).then((json) => {
       this.setState({
         username: json["username"],
-        entries: json["entries"]
+        entries: json["entries"],
+        categories: json["categories"]
       });
     });
   }
   render() {
-    const {username, entries} = this.state;
+    const {username, entries, categories} = this.state;
     if (username == "") {
       return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("h1", null, "Loading..."));
     } else {
@@ -42,7 +44,9 @@ class App extends React.Component {
       }, /* @__PURE__ */ React.createElement(Button, {
         variant: "primary",
         type: "submit"
-      }, "Logout")), /* @__PURE__ */ React.createElement(AddForm, null));
+      }, "Logout")), /* @__PURE__ */ React.createElement(AddForm, {
+        categories
+      }));
     }
   }
 }

@@ -9,6 +9,7 @@ class App extends React.Component {
     this.state = {
       username: "",
       entries: [],
+      categories: [],
     };
     this.load();
   }
@@ -23,12 +24,13 @@ class App extends React.Component {
         this.setState({
           username: json["username"],
           entries: json["entries"],
+          categories: json["categories"],
         });
       });
   }
 
   render() {
-    const { username, entries } = this.state;
+    const { username, entries, categories } = this.state;
     if (username == "") {
       return (
         <>
@@ -61,7 +63,7 @@ class App extends React.Component {
               Logout
             </Button>
           </Form>
-          <AddForm />
+          <AddForm categories={categories} />
         </>
       );
     }

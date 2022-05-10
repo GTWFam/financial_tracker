@@ -1,6 +1,6 @@
 import React from "react";
 import { Table, Button } from "react-bootstrap";
-import { removeEntry, openAddForm } from "./public/editData";
+import { removeEntry, openAddForm } from "./public/scripts/editData";
 
 class MonthTab extends React.Component {
   render() {
@@ -10,6 +10,7 @@ class MonthTab extends React.Component {
       <Table bordered size="md">
         <thead>
           <tr class="table-primary align-middle" height="40px">
+            <th>Date</th>
             <th>From</th>
             <th>Amount</th>
             <th>Category</th>
@@ -33,13 +34,14 @@ class MonthTab extends React.Component {
             }
             return (
               <tr className={`align-middle ${rowColor}`} height="40">
+                <td>{entry.date}</td>
                 <td>{entry.from}</td>
                 <td>{entry.amount}$</td>
                 <td>{entry.category}</td>
                 <td>
                   <Button
                     type="button"
-                    onClick={() => removeEntry(entry)}
+                    onClick={() => removeEntry(entry, month)}
                     variant="danger"
                   >
                     <span
@@ -59,6 +61,7 @@ class MonthTab extends React.Component {
           >
             <td>Total</td>
             <td>{total}$</td>
+            <td></td>
             <td></td>
             <td></td>
           </tr>

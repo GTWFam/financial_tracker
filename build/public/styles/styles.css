@@ -44,6 +44,10 @@ body {
   opacity: 1;
 }
 
+.hidden {
+  display: none;
+}
+
 .success {
   background-color: #d1e7dd;
 }

@@ -158,6 +158,7 @@ app.post("/signUp", async (req, res) => {
         [], // Nov
         [], // Dec
       ],
+      categories: [],
     });
     return res.redirect("/");
   } catch (e) {
@@ -197,6 +198,7 @@ app.post("/addEntry", async (req, res) => {
   let m = new Date(Date.parse(req.body.month + "1, 2022")).getMonth();
   let userEntries = users[0].entries;
   userEntries[m].push({
+    date: req.body.date,
     from: req.body.from,
     amount: req.body.amount,
     category: req.body.category,
@@ -217,21 +219,23 @@ app.post("/addEntry", async (req, res) => {
 app.post("/removeEntry", async (req, res) => {
   console.log(
     req.query.id,
-    req.query.month,
+    req.query.date,
     req.query.from,
     req.query.amount,
     req.query.category
   );
   let users = await collection.find({ _id: ObjectId(req.query.id) }).toArray();
-  let m = new Date(Date.parse(req.body.month + "1, 2022")).getMonth();
+  let m = new Date(Date.parse(req.query.month + "1, 2022")).getMonth();
   let userEntries = users[0].entries;
   let entry = {
+    date: req.query.date,
     from: req.query.from,
     amount: req.query.amount,
     category: req.query.category,
   };
   let index = userEntries[m].findIndex((e) => {
     return (
+      e.date === entry.date &&
       e.from === entry.from &&
       e.amount === entry.amount &&
       e.category === entry.category
@@ -247,6 +251,22 @@ app.post("/removeEntry", async (req, res) => {
     res.end();
   } catch (e) {
     alert("Failed to remove an entry: " + e.message);
+  }
+});
+
+app.post("/addCategory", async (req, res) => {
+  let users = await collection.find({ _id: ObjectId(req.body.id) }).toArray();
+  let userCategories = users[0].categories;
+  userCategories.push(req.body.addCategory);
+  try {
+    collection.updateOne(
+      { _id: ObjectId(req.body.id) },
+      { $set: { categories: userCategories } }
+    );
+    return res.redirect("/dashboard?userID=" + req.body.id);
+  } catch (e) {
+    alert("Failed to add a transaction: " + e.message);
+    return;
   }
 });
 

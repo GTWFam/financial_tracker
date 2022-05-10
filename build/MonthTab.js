@@ -1,6 +1,6 @@
 import React from "./_snowpack/pkg/react.js";
 import {Table, Button} from "./_snowpack/pkg/react-bootstrap.js";
-import {removeEntry, openAddForm} from "./public/editData.js";
+import {removeEntry, openAddForm} from "./public/scripts/editData.js";
 class MonthTab extends React.Component {
   render() {
     const {month, data} = this.props;
@@ -11,7 +11,7 @@ class MonthTab extends React.Component {
     }, /* @__PURE__ */ React.createElement("thead", null, /* @__PURE__ */ React.createElement("tr", {
       class: "table-primary align-middle",
       height: "40px"
-    }, /* @__PURE__ */ React.createElement("th", null, "From"), /* @__PURE__ */ React.createElement("th", null, "Amount"), /* @__PURE__ */ React.createElement("th", null, "Category"), /* @__PURE__ */ React.createElement("th", {
+    }, /* @__PURE__ */ React.createElement("th", null, "Date"), /* @__PURE__ */ React.createElement("th", null, "From"), /* @__PURE__ */ React.createElement("th", null, "Amount"), /* @__PURE__ */ React.createElement("th", null, "Category"), /* @__PURE__ */ React.createElement("th", {
       width: "50"
     }, /* @__PURE__ */ React.createElement(Button, {
       type: "button",
@@ -29,9 +29,9 @@ class MonthTab extends React.Component {
       return /* @__PURE__ */ React.createElement("tr", {
         className: `align-middle ${rowColor}`,
         height: "40"
-      }, /* @__PURE__ */ React.createElement("td", null, entry.from), /* @__PURE__ */ React.createElement("td", null, entry.amount, "$"), /* @__PURE__ */ React.createElement("td", null, entry.category), /* @__PURE__ */ React.createElement("td", null, /* @__PURE__ */ React.createElement(Button, {
+      }, /* @__PURE__ */ React.createElement("td", null, entry.date), /* @__PURE__ */ React.createElement("td", null, entry.from), /* @__PURE__ */ React.createElement("td", null, entry.amount, "$"), /* @__PURE__ */ React.createElement("td", null, entry.category), /* @__PURE__ */ React.createElement("td", null, /* @__PURE__ */ React.createElement(Button, {
         type: "button",
-        onClick: () => removeEntry(entry),
+        onClick: () => removeEntry(entry, month),
         variant: "danger"
       }, /* @__PURE__ */ React.createElement("span", {
         class: "fas fa-times-circle fa-lg add-entry",
@@ -40,7 +40,7 @@ class MonthTab extends React.Component {
     }), /* @__PURE__ */ React.createElement("tr", {
       className: `align-middle last-row ${total < 0 ? "danger" : "success"}`,
       height: "40"
-    }, /* @__PURE__ */ React.createElement("td", null, "Total"), /* @__PURE__ */ React.createElement("td", null, total, "$"), /* @__PURE__ */ React.createElement("td", null), /* @__PURE__ */ React.createElement("td", null))));
+    }, /* @__PURE__ */ React.createElement("td", null, "Total"), /* @__PURE__ */ React.createElement("td", null, total, "$"), /* @__PURE__ */ React.createElement("td", null), /* @__PURE__ */ React.createElement("td", null), /* @__PURE__ */ React.createElement("td", null))));
   }
 }
 export default MonthTab;
