@@ -36,7 +36,7 @@ class MonthTab extends React.Component {
               <tr className={`align-middle ${rowColor}`} height="40">
                 <td>{entry.date}</td>
                 <td>{entry.from}</td>
-                <td>{entry.amount}$</td>
+                <td>$ {entry.amount}</td>
                 <td>{entry.category}</td>
                 <td>
                   <Button
@@ -60,8 +60,8 @@ class MonthTab extends React.Component {
             height="40"
           >
             <td>Total</td>
-            <td>{total}$</td>
             <td></td>
+            <td>$ {total}</td>
             <td></td>
             <td></td>
           </tr>

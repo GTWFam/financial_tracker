@@ -12,7 +12,14 @@ import {
 import { openAddForm } from "./public/scripts/editData";
 
 class AddForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date(),
+    };
+  }
   render() {
+    let { date } = this.state;
     const { categories } = this.props;
     return (
       <Container className="whole-page closed" id="addEntryOverlay">
@@ -40,7 +47,8 @@ class AddForm extends React.Component {
                       type="date"
                       name="date"
                       placeholder="Date of Transaction"
-                      value={new Date()}
+                      value={date}
+                      onChange={(e) => setDate(e.target.value)}
                     />
                   </Form.Group>
                   <Form.Group controlId="from">
@@ -49,7 +57,7 @@ class AddForm extends React.Component {
                   </Form.Group>
                   <Form.Group controlId="amount">
                     <Form.Label>How much</Form.Label>
-                    <Form.Control name="amount"></Form.Control>
+                    <Form.Control type="number" name="amount"></Form.Control>
                   </Form.Group>
                   <Form.Group controlId="category">
                     <Form.Label>Which category</Form.Label>
