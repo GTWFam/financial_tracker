@@ -44,6 +44,7 @@ class AddForm extends React.Component {
                   <Form.Group>
                     <Form.Label>When</Form.Label>
                     <Form.Control
+                      required
                       type="date"
                       name="date"
                       placeholder="Date of Transaction"
@@ -57,11 +58,15 @@ class AddForm extends React.Component {
                   </Form.Group>
                   <Form.Group controlId="from">
                     <Form.Label>From where</Form.Label>
-                    <Form.Control name="from"></Form.Control>
+                    <Form.Control required name="from"></Form.Control>
                   </Form.Group>
                   <Form.Group controlId="amount">
                     <Form.Label>How much</Form.Label>
-                    <Form.Control type="number" name="amount"></Form.Control>
+                    <Form.Control
+                      required
+                      type="number"
+                      name="amount"
+                    ></Form.Control>
                   </Form.Group>
                   <Form.Group controlId="category">
                     <Form.Label>Which category</Form.Label>

@@ -48,10 +48,16 @@ body {
   display: none;
 }
 
+.success,
+.danger {
+  background-position: center;
+  background-size: cover;
+}
+
 .success {
-  background-color: #d1e7dd;
+  background-image: url(/public/img/dollar-bill.png);
 }
 
 .danger {
-  background-color: #f8d7da;
+  background-image: url(/public/img/dollar-bill-red.png);
 }

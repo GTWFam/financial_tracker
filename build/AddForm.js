@@ -52,6 +52,7 @@ class AddForm extends React.Component {
       readOnly: true,
       name: "month"
     })), /* @__PURE__ */ React.createElement(Form.Group, null, /* @__PURE__ */ React.createElement(Form.Label, null, "When"), /* @__PURE__ */ React.createElement(Form.Control, {
+      required: true,
       type: "date",
       name: "date",
       placeholder: "Date of Transaction",
@@ -62,10 +63,12 @@ class AddForm extends React.Component {
     })), /* @__PURE__ */ React.createElement(Form.Group, {
       controlId: "from"
     }, /* @__PURE__ */ React.createElement(Form.Label, null, "From where"), /* @__PURE__ */ React.createElement(Form.Control, {
+      required: true,
       name: "from"
     })), /* @__PURE__ */ React.createElement(Form.Group, {
       controlId: "amount"
     }, /* @__PURE__ */ React.createElement(Form.Label, null, "How much"), /* @__PURE__ */ React.createElement(Form.Control, {
+      required: true,
       type: "number",
       name: "amount"
     })), /* @__PURE__ */ React.createElement(Form.Group, {

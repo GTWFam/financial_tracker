@@ -1,11 +1,13 @@
 import React from "./_snowpack/pkg/react.js";
 import {Table, Button} from "./_snowpack/pkg/react-bootstrap.js";
 import {removeEntry, openAddForm} from "./public/scripts/editData.js";
+import img from "./public/img/dollar-bill.png.proxy.js";
+import img2 from "./public/img/dollar-bill-red.png.proxy.js";
 class MonthTab extends React.Component {
   render() {
     const {month, data} = this.props;
-    let total = 0;
-    return /* @__PURE__ */ React.createElement(Table, {
+    let total = data.shift()["balance"];
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("h2", null, "Balance: ", total), /* @__PURE__ */ React.createElement(Table, {
       bordered: true,
       size: "md"
     }, /* @__PURE__ */ React.createElement("thead", null, /* @__PURE__ */ React.createElement("tr", {
@@ -29,7 +31,9 @@ class MonthTab extends React.Component {
       return /* @__PURE__ */ React.createElement("tr", {
         className: `align-middle`,
         height: "40"
-      }, /* @__PURE__ */ React.createElement("td", null, entry.date), /* @__PURE__ */ React.createElement("td", null, entry.from), /* @__PURE__ */ React.createElement("td", null, "$ ", entry.amount), /* @__PURE__ */ React.createElement("td", null, entry.category), /* @__PURE__ */ React.createElement("td", null, /* @__PURE__ */ React.createElement(Button, {
+      }, /* @__PURE__ */ React.createElement("td", null, entry.date), /* @__PURE__ */ React.createElement("td", null, entry.from), /* @__PURE__ */ React.createElement("td", {
+        className: rowColor
+      }, /* @__PURE__ */ React.createElement("span", null, "$ ", entry.amount)), /* @__PURE__ */ React.createElement("td", null, entry.category), /* @__PURE__ */ React.createElement("td", null, /* @__PURE__ */ React.createElement(Button, {
         type: "button",
         onClick: () => removeEntry(entry, month),
         variant: "danger"
@@ -37,10 +41,7 @@ class MonthTab extends React.Component {
         class: "fas fa-times-circle fa-lg add-entry",
         "aria-hidden": "true"
       }))));
-    }), /* @__PURE__ */ React.createElement("tr", {
-      className: `align-middle last-row ${total < 0 ? "danger" : "success"}`,
-      height: "40"
-    }, /* @__PURE__ */ React.createElement("td", null, "Total"), /* @__PURE__ */ React.createElement("td", null), /* @__PURE__ */ React.createElement("td", null, "$ ", total), /* @__PURE__ */ React.createElement("td", null), /* @__PURE__ */ React.createElement("td", null))));
+    }))));
   }
 }
 export default MonthTab;
