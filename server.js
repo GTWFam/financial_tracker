@@ -192,7 +192,6 @@ app.get("/getUserData", async (req, res) => {
   for (let i = 0; i < userData["entries"].length; i++) {
     let arr = userData["entries"][i];
     prev_sum += arr.reduce((acc, a) => acc + parseInt(a["amount"]), 0);
-    console.log(prev_sum);
     arr.unshift({
       balance: prev_sum,
     });
@@ -215,10 +214,9 @@ app.post("/addEntry", async (req, res) => {
   userEntries[m].push({
     date: d,
     from: req.body.from,
-    amount: req.body.amount,
+    amount: req.body.expense ? "-" + req.body.amount : req.body.amount,
     category: req.body.category,
   });
-
   try {
     collection.updateOne(
       { _id: ObjectId(req.body.id) },

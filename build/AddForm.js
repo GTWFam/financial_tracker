@@ -65,13 +65,27 @@ class AddForm extends React.Component {
     }, /* @__PURE__ */ React.createElement(Form.Label, null, "From where"), /* @__PURE__ */ React.createElement(Form.Control, {
       required: true,
       name: "from"
-    })), /* @__PURE__ */ React.createElement(Form.Group, {
+    })), /* @__PURE__ */ React.createElement(Row, null, /* @__PURE__ */ React.createElement(Col, {
+      xs: "auto"
+    }, /* @__PURE__ */ React.createElement(Form.Group, {
       controlId: "amount"
     }, /* @__PURE__ */ React.createElement(Form.Label, null, "How much"), /* @__PURE__ */ React.createElement(Form.Control, {
       required: true,
       type: "number",
-      name: "amount"
-    })), /* @__PURE__ */ React.createElement(Form.Group, {
+      name: "amount",
+      min: 0
+    }))), /* @__PURE__ */ React.createElement(Col, {
+      xs: 2
+    }, /* @__PURE__ */ React.createElement(Form.Group, {
+      controlId: "expense"
+    }, /* @__PURE__ */ React.createElement(Form.Label, null, "Expense?"), /* @__PURE__ */ React.createElement("label", {
+      className: "switch"
+    }, /* @__PURE__ */ React.createElement("input", {
+      name: "expense",
+      type: "checkbox"
+    }), /* @__PURE__ */ React.createElement("span", {
+      className: "slider round"
+    }))))), /* @__PURE__ */ React.createElement(Form.Group, {
       controlId: "category"
     }, /* @__PURE__ */ React.createElement(Form.Label, null, "Which category"), /* @__PURE__ */ React.createElement(Form.Select, {
       name: "category"

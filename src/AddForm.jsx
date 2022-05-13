@@ -60,14 +60,28 @@ class AddForm extends React.Component {
                     <Form.Label>From where</Form.Label>
                     <Form.Control required name="from"></Form.Control>
                   </Form.Group>
-                  <Form.Group controlId="amount">
-                    <Form.Label>How much</Form.Label>
-                    <Form.Control
-                      required
-                      type="number"
-                      name="amount"
-                    ></Form.Control>
-                  </Form.Group>
+                  <Row>
+                    <Col xs="auto">
+                      <Form.Group controlId="amount">
+                        <Form.Label>How much</Form.Label>
+                        <Form.Control
+                          required
+                          type="number"
+                          name="amount"
+                          min={0}
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col xs={2}>
+                      <Form.Group controlId="expense">
+                        <Form.Label>Expense?</Form.Label>
+                        <label className="switch">
+                          <input name="expense" type="checkbox"></input>
+                          <span className="slider round"></span>
+                        </label>
+                      </Form.Group>
+                    </Col>
+                  </Row>
                   <Form.Group controlId="category">
                     <Form.Label>Which category</Form.Label>
                     <Form.Select name="category">
