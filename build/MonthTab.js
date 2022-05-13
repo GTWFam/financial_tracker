@@ -27,9 +27,9 @@ class MonthTab extends React.Component {
         rowColor = "danger";
       }
       return /* @__PURE__ */ React.createElement("tr", {
-        className: `align-middle ${rowColor}`,
+        className: `align-middle`,
         height: "40"
-      }, /* @__PURE__ */ React.createElement("td", null, entry.date), /* @__PURE__ */ React.createElement("td", null, entry.from), /* @__PURE__ */ React.createElement("td", null, entry.amount, "$"), /* @__PURE__ */ React.createElement("td", null, entry.category), /* @__PURE__ */ React.createElement("td", null, /* @__PURE__ */ React.createElement(Button, {
+      }, /* @__PURE__ */ React.createElement("td", null, entry.date), /* @__PURE__ */ React.createElement("td", null, entry.from), /* @__PURE__ */ React.createElement("td", null, "$ ", entry.amount), /* @__PURE__ */ React.createElement("td", null, entry.category), /* @__PURE__ */ React.createElement("td", null, /* @__PURE__ */ React.createElement(Button, {
         type: "button",
         onClick: () => removeEntry(entry, month),
         variant: "danger"
@@ -40,7 +40,7 @@ class MonthTab extends React.Component {
     }), /* @__PURE__ */ React.createElement("tr", {
       className: `align-middle last-row ${total < 0 ? "danger" : "success"}`,
       height: "40"
-    }, /* @__PURE__ */ React.createElement("td", null, "Total"), /* @__PURE__ */ React.createElement("td", null, total, "$"), /* @__PURE__ */ React.createElement("td", null), /* @__PURE__ */ React.createElement("td", null), /* @__PURE__ */ React.createElement("td", null))));
+    }, /* @__PURE__ */ React.createElement("td", null, "Total"), /* @__PURE__ */ React.createElement("td", null), /* @__PURE__ */ React.createElement("td", null, "$ ", total), /* @__PURE__ */ React.createElement("td", null), /* @__PURE__ */ React.createElement("td", null))));
   }
 }
 export default MonthTab;

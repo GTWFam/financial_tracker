@@ -197,8 +197,15 @@ app.post("/addEntry", async (req, res) => {
   let users = await collection.find({ _id: ObjectId(req.body.id) }).toArray();
   let m = new Date(Date.parse(req.body.month + "1, 2022")).getMonth();
   let userEntries = users[0].entries;
+  let d = new Date(Date.parse(req.body.date));
+  d =
+    (d.getDate() + 1 < 10 ? "0" + (d.getDate() + 1) : d.getDate() + 1) +
+    "/" +
+    (d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1) +
+    "/" +
+    d.getFullYear();
   userEntries[m].push({
-    date: req.body.date,
+    date: d,
     from: req.body.from,
     amount: req.body.amount,
     category: req.body.category,

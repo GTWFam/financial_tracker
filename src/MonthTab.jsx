@@ -33,7 +33,7 @@ class MonthTab extends React.Component {
               rowColor = "danger";
             }
             return (
-              <tr className={`align-middle ${rowColor}`} height="40">
+              <tr className={`align-middle`} height="40">
                 <td>{entry.date}</td>
                 <td>{entry.from}</td>
                 <td>$ {entry.amount}</td>

@@ -11,7 +11,14 @@ import {
 } from "./_snowpack/pkg/react-bootstrap.js";
 import {openAddForm} from "./public/scripts/editData.js";
 class AddForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date()
+    };
+  }
   render() {
+    let {date} = this.state;
     const {categories} = this.props;
     return /* @__PURE__ */ React.createElement(Container, {
       className: "whole-page closed",
@@ -48,7 +55,10 @@ class AddForm extends React.Component {
       type: "date",
       name: "date",
       placeholder: "Date of Transaction",
-      value: new Date()
+      value: date,
+      onChange: (e) => this.setState({
+        date: e.target.value
+      })
     })), /* @__PURE__ */ React.createElement(Form.Group, {
       controlId: "from"
     }, /* @__PURE__ */ React.createElement(Form.Label, null, "From where"), /* @__PURE__ */ React.createElement(Form.Control, {
@@ -56,6 +66,7 @@ class AddForm extends React.Component {
     })), /* @__PURE__ */ React.createElement(Form.Group, {
       controlId: "amount"
     }, /* @__PURE__ */ React.createElement(Form.Label, null, "How much"), /* @__PURE__ */ React.createElement(Form.Control, {
+      type: "number",
       name: "amount"
     })), /* @__PURE__ */ React.createElement(Form.Group, {
       controlId: "category"

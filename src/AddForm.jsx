@@ -48,7 +48,11 @@ class AddForm extends React.Component {
                       name="date"
                       placeholder="Date of Transaction"
                       value={date}
-                      onChange={(e) => setDate(e.target.value)}
+                      onChange={(e) =>
+                        this.setState({
+                          date: e.target.value,
+                        })
+                      }
                     />
                   </Form.Group>
                   <Form.Group controlId="from">
