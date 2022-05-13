@@ -66,7 +66,7 @@ class AddForm extends React.Component {
       required: true,
       name: "from"
     })), /* @__PURE__ */ React.createElement(Row, null, /* @__PURE__ */ React.createElement(Col, {
-      xs: "auto"
+      xs: 8
     }, /* @__PURE__ */ React.createElement(Form.Group, {
       controlId: "amount"
     }, /* @__PURE__ */ React.createElement(Form.Label, null, "How much"), /* @__PURE__ */ React.createElement(Form.Control, {

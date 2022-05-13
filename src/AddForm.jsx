@@ -61,7 +61,7 @@ class AddForm extends React.Component {
                     <Form.Control required name="from"></Form.Control>
                   </Form.Group>
                   <Row>
-                    <Col xs="auto">
+                    <Col xs={8}>
                       <Form.Group controlId="amount">
                         <Form.Label>How much</Form.Label>
                         <Form.Control
