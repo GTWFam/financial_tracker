@@ -49,7 +49,7 @@ class App extends React.Component {
             </Row>
             <Row className="justify-content-md-center text-center">
               <Col>
-                <Months entries={entries} />
+                <Months entries={entries} categories={categories} />
               </Col>
             </Row>
           </Container>

@@ -270,7 +270,8 @@ app.post("/removeEntry", async (req, res) => {
 app.post("/addCategory", async (req, res) => {
   let users = await collection.find({ _id: ObjectId(req.body.id) }).toArray();
   let userCategories = users[0].categories;
-  userCategories.push(req.body.addCategory);
+  let category = capitalize(req.body.addCategory);
+  userCategories[category] = req.body.categoryColor;
   try {
     collection.updateOne(
       { _id: ObjectId(req.body.id) },
@@ -295,6 +296,12 @@ function checkNotAuthenticated(req, res, next) {
     return res.redirect("/");
   }
   next();
+}
+
+function capitalize(str) {
+  let lower = str.toLowerCase();
+  let upper = str.charAt(0).toUpperCase();
+  return upper + lower.slice(1);
 }
 
 app.use(express.static("build"));

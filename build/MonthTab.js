@@ -1,11 +1,12 @@
 import React from "./_snowpack/pkg/react.js";
 import {Table, Button} from "./_snowpack/pkg/react-bootstrap.js";
 import {removeEntry, openAddForm} from "./public/scripts/editData.js";
+import {contrastFont} from "./public/scripts/scripts.js";
 import img from "./public/img/dollar-bill.png.proxy.js";
 import img2 from "./public/img/dollar-bill-red.png.proxy.js";
 class MonthTab extends React.Component {
   render() {
-    const {month, data} = this.props;
+    const {month, data, categories} = this.props;
     let total = data.shift()["balance"];
     return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("h2", null, "Balance: ", total), /* @__PURE__ */ React.createElement(Table, {
       bordered: true,
@@ -33,7 +34,19 @@ class MonthTab extends React.Component {
         height: "40"
       }, /* @__PURE__ */ React.createElement("td", null, entry.date), /* @__PURE__ */ React.createElement("td", null, entry.from), /* @__PURE__ */ React.createElement("td", {
         className: rowColor
-      }, /* @__PURE__ */ React.createElement("span", null, "$ ", entry.amount)), /* @__PURE__ */ React.createElement("td", null, entry.category), /* @__PURE__ */ React.createElement("td", null, /* @__PURE__ */ React.createElement(Button, {
+      }, /* @__PURE__ */ React.createElement("span", null, "$ ", entry.amount)), /* @__PURE__ */ React.createElement("td", null, /* @__PURE__ */ React.createElement("p", {
+        style: {position: "relative", margin: "0px"}
+      }, entry.category, /* @__PURE__ */ React.createElement("span", {
+        style: {
+          "background-color": categories[entry.category],
+          width: 25,
+          height: 25,
+          display: "block",
+          position: "absolute",
+          right: 10,
+          top: 0
+        }
+      }))), /* @__PURE__ */ React.createElement("td", null, /* @__PURE__ */ React.createElement(Button, {
         type: "button",
         onClick: () => removeEntry(entry, month),
         variant: "danger"

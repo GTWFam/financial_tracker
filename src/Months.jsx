@@ -4,7 +4,7 @@ import MonthTab from "./MonthTab";
 
 class Months extends React.Component {
   render() {
-    const { entries } = this.props;
+    const { entries, categories } = this.props;
     console.log(entries);
     let allMonths = [
       "January",
@@ -32,7 +32,11 @@ class Months extends React.Component {
           let monthEntries = entries[index];
           return (
             <Tab eventKey={month} title={month}>
-              <MonthTab month={month} data={monthEntries} />
+              <MonthTab
+                month={month}
+                data={monthEntries}
+                categories={categories}
+              />
             </Tab>
           );
         })}

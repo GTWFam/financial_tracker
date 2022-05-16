@@ -21,6 +21,8 @@ class AddForm extends React.Component {
   render() {
     let { date } = this.state;
     const { categories } = this.props;
+    console.log(categories);
+    console.log(Object.keys(categories));
     return (
       <Container className="whole-page closed" id="addEntryOverlay">
         <Row className="justify-content-md-center align-items-md-center h-100">
@@ -85,7 +87,8 @@ class AddForm extends React.Component {
                   <Form.Group controlId="category">
                     <Form.Label>Which category</Form.Label>
                     <Form.Select name="category">
-                      {categories.map((category) => {
+                      {Object.keys(categories).map((category) => {
+                        console.log(category);
                         return <option value={category}>{category}</option>;
                       })}
                     </Form.Select>
@@ -117,10 +120,24 @@ class AddForm extends React.Component {
                     <Form.Label>User ID</Form.Label>
                     <Form.Control readOnly name="id"></Form.Control>
                   </Form.Group>
-                  <Form.Group controlId="addCategory">
-                    <Form.Label>Category Name</Form.Label>
-                    <Form.Control name="addCategory"></Form.Control>
-                  </Form.Group>
+                  <Row>
+                    <Col sm={8}>
+                      <Form.Group controlId="addCategory">
+                        <Form.Label>Category Name</Form.Label>
+                        <Form.Control name="addCategory"></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col sm={4}>
+                      <Form.Group controlId="categoryColor">
+                        <Form.Label>Category Color</Form.Label>
+                        <input
+                          type="color"
+                          name="categoryColor"
+                          id="categoryColor"
+                        />
+                      </Form.Group>
+                    </Col>
+                  </Row>
                   <Row className="justify-content-md-start mt-3">
                     <Col sm={5}>
                       <Button variant="primary" type="submit">

@@ -35,7 +35,8 @@ class App extends React.Component {
       }, /* @__PURE__ */ React.createElement(Col, null, /* @__PURE__ */ React.createElement("h1", null, "Welcome to GTWFin, ", username)), /* @__PURE__ */ React.createElement(Col, null)), /* @__PURE__ */ React.createElement(Row, {
         className: "justify-content-md-center text-center"
       }, /* @__PURE__ */ React.createElement(Col, null, /* @__PURE__ */ React.createElement(Months, {
-        entries
+        entries,
+        categories
       })))), /* @__PURE__ */ React.createElement(Form, {
         id: "logout-btn",
         className: "top-right",

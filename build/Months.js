@@ -3,7 +3,7 @@ import {Tabs, Tab, Fade} from "./_snowpack/pkg/react-bootstrap.js";
 import MonthTab from "./MonthTab.js";
 class Months extends React.Component {
   render() {
-    const {entries} = this.props;
+    const {entries, categories} = this.props;
     console.log(entries);
     let allMonths = [
       "January",
@@ -32,7 +32,8 @@ class Months extends React.Component {
         title: month
       }, /* @__PURE__ */ React.createElement(MonthTab, {
         month,
-        data: monthEntries
+        data: monthEntries,
+        categories
       }));
     }));
   }

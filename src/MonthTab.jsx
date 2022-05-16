@@ -1,12 +1,13 @@
 import React from "react";
 import { Table, Button } from "react-bootstrap";
 import { removeEntry, openAddForm } from "./public/scripts/editData";
+import { contrastFont } from "./public/scripts/scripts";
 import img from "./public/img/dollar-bill.png";
 import img2 from "./public/img/dollar-bill-red.png";
 
 class MonthTab extends React.Component {
   render() {
-    const { month, data } = this.props;
+    const { month, data, categories } = this.props;
     let total = data.shift()["balance"];
     return (
       <>
@@ -43,7 +44,22 @@ class MonthTab extends React.Component {
                   <td className={rowColor}>
                     <span>$ {entry.amount}</span>
                   </td>
-                  <td>{entry.category}</td>
+                  <td>
+                    <p style={{ position: "relative", margin: "0px" }}>
+                      {entry.category}
+                      <span
+                        style={{
+                          "background-color": categories[entry.category],
+                          width: 25,
+                          height: 25,
+                          display: "block",
+                          position: "absolute",
+                          right: 10,
+                          top: 0,
+                        }}
+                      ></span>
+                    </p>
+                  </td>
                   <td>
                     <Button
                       type="button"
