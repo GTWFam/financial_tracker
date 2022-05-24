@@ -21,7 +21,6 @@ class AddForm extends React.Component {
   render() {
     let { date } = this.state;
     const { categories } = this.props;
-    console.log(categories);
     console.log(Object.keys(categories));
     return (
       <Container className="whole-page closed" id="addEntryOverlay">
@@ -88,7 +87,6 @@ class AddForm extends React.Component {
                     <Form.Label>Which category</Form.Label>
                     <Form.Select name="category">
                       {Object.keys(categories).map((category) => {
-                        console.log(category);
                         return <option value={category}>{category}</option>;
                       })}
                     </Form.Select>

@@ -6,12 +6,13 @@ import img from "./public/img/dollar-bill.png";
 import img2 from "./public/img/dollar-bill-red.png";
 
 class MonthTab extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const { month, data, categories } = this.props;
-    let total = data.shift()["balance"];
     return (
       <>
-        <h2>Balance: {total}</h2>
         <Table bordered size="md">
           <thead>
             <tr class="table-primary align-middle" height="40px">
@@ -30,9 +31,7 @@ class MonthTab extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {data.map((entry) => {
-              console.log(entry);
-              total += parseInt(entry.amount);
+            {data.slice(1).map((entry) => {
               let rowColor = "success";
               if (entry.amount < 0) {
                 rowColor = "danger";
@@ -46,18 +45,17 @@ class MonthTab extends React.Component {
                   </td>
                   <td>
                     <p style={{ position: "relative", margin: "0px" }}>
-                      {entry.category}
                       <span
                         style={{
                           "background-color": categories[entry.category],
-                          width: 25,
-                          height: 25,
-                          display: "block",
-                          position: "absolute",
-                          right: 10,
-                          top: 0,
+                          padding: "7px 0px",
+                          "min-width": "45%",
+                          display: "inline-block",
+                          color: contrastFont(categories[entry.category]),
                         }}
-                      ></span>
+                      >
+                        {entry.category}
+                      </span>
                     </p>
                   </td>
                   <td>

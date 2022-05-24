@@ -20,7 +20,6 @@ class AddForm extends React.Component {
   render() {
     let {date} = this.state;
     const {categories} = this.props;
-    console.log(categories);
     console.log(Object.keys(categories));
     return /* @__PURE__ */ React.createElement(Container, {
       className: "whole-page closed",
@@ -92,7 +91,6 @@ class AddForm extends React.Component {
     }, /* @__PURE__ */ React.createElement(Form.Label, null, "Which category"), /* @__PURE__ */ React.createElement(Form.Select, {
       name: "category"
     }, Object.keys(categories).map((category) => {
-      console.log(category);
       return /* @__PURE__ */ React.createElement("option", {
         value: category
       }, category);

@@ -5,10 +5,12 @@ import {contrastFont} from "./public/scripts/scripts.js";
 import img from "./public/img/dollar-bill.png.proxy.js";
 import img2 from "./public/img/dollar-bill-red.png.proxy.js";
 class MonthTab extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const {month, data, categories} = this.props;
-    let total = data.shift()["balance"];
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("h2", null, "Balance: ", total), /* @__PURE__ */ React.createElement(Table, {
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Table, {
       bordered: true,
       size: "md"
     }, /* @__PURE__ */ React.createElement("thead", null, /* @__PURE__ */ React.createElement("tr", {
@@ -22,9 +24,7 @@ class MonthTab extends React.Component {
     }, /* @__PURE__ */ React.createElement("span", {
       class: "fas fa-plus-circle fa-lg",
       "aria-hidden": "true"
-    }))))), /* @__PURE__ */ React.createElement("tbody", null, data.map((entry) => {
-      console.log(entry);
-      total += parseInt(entry.amount);
+    }))))), /* @__PURE__ */ React.createElement("tbody", null, data.slice(1).map((entry) => {
       let rowColor = "success";
       if (entry.amount < 0) {
         rowColor = "danger";
@@ -36,17 +36,15 @@ class MonthTab extends React.Component {
         className: rowColor
       }, /* @__PURE__ */ React.createElement("span", null, "$ ", entry.amount)), /* @__PURE__ */ React.createElement("td", null, /* @__PURE__ */ React.createElement("p", {
         style: {position: "relative", margin: "0px"}
-      }, entry.category, /* @__PURE__ */ React.createElement("span", {
+      }, /* @__PURE__ */ React.createElement("span", {
         style: {
           "background-color": categories[entry.category],
-          width: 25,
-          height: 25,
-          display: "block",
-          position: "absolute",
-          right: 10,
-          top: 0
+          padding: "7px 0px",
+          "min-width": "45%",
+          display: "inline-block",
+          color: contrastFont(categories[entry.category])
         }
-      }))), /* @__PURE__ */ React.createElement("td", null, /* @__PURE__ */ React.createElement(Button, {
+      }, entry.category))), /* @__PURE__ */ React.createElement("td", null, /* @__PURE__ */ React.createElement(Button, {
         type: "button",
         onClick: () => removeEntry(entry, month),
         variant: "danger"

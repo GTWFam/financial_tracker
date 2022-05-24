@@ -30,7 +30,6 @@ $(document).ready(() => {
 
   const queryString = new URLSearchParams(window.location.search);
   const userID = queryString.get("userID");
-  console.log(userID);
 
   $.get(`/getUserData?id=${userID}`, (res) => {
     let username = res.username;

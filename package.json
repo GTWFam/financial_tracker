@@ -1,7 +1,7 @@
 {
-  "name": "a4-components",
+  "name": "gtwfin",
   "version": "1.0.0",
-  "description": "",
+  "description": "Financial Tracker",
   "main": "index.js",
   "keywords": [],
   "author": "",

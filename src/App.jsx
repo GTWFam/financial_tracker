@@ -11,16 +11,17 @@ class App extends React.Component {
       entries: [],
       categories: [],
     };
-    this.load();
   }
 
-  load() {
+  componentDidMount() {
     const queryString = new URLSearchParams(window.location.search);
     const userID = queryString.get("userID");
 
     fetch(`/getUserData?id=${userID}`, { method: "get", "no-cors": true })
       .then((res) => res.json())
       .then((json) => {
+        console.log("This is entries:");
+        console.log(json);
         this.setState({
           username: json["username"],
           entries: json["entries"],
@@ -31,23 +32,33 @@ class App extends React.Component {
 
   render() {
     const { username, entries, categories } = this.state;
-    if (username == "") {
+    if (username === "") {
       return (
         <>
-          <h1>Loading...</h1>
+          <div
+            className="whole-page"
+            style={{
+              "text-align": "center",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <h1>Loading...</h1>
+          </div>
         </>
       );
     } else {
       return (
         <>
-          <Container className="mt-5 md-3">
-            <Row className="justify-content-md-center text-center">
-              <Col>
+          <Container className="mt-5 mb-3">
+            <Row>
+              <Col className="ps-0">
                 <h1>Welcome to GTWFin, {username}</h1>
               </Col>
               <Col></Col>
             </Row>
-            <Row className="justify-content-md-center text-center">
+            <Row>
               <Col>
                 <Months entries={entries} categories={categories} />
               </Col>

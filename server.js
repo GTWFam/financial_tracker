@@ -187,15 +187,16 @@ app.get("/getUserData", async (req, res) => {
   let userData = users[0];
   delete userData["password"];
   delete userData["_id"];
-  console.log(userData);
   let prev_sum = 0;
   for (let i = 0; i < userData["entries"].length; i++) {
     let arr = userData["entries"][i];
-    prev_sum += arr.reduce((acc, a) => acc + parseInt(a["amount"]), 0);
-    arr.unshift({
+    let arr_copy = [...arr];
+    prev_sum += arr_copy.reduce((acc, a) => acc + parseInt(a["amount"]), 0);
+    userData["entries"][i].unshift({
       balance: prev_sum,
     });
   }
+  console.log(userData);
   res.json(userData);
   res.end();
 });
