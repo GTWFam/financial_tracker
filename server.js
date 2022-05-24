@@ -52,7 +52,7 @@ client
   .then(console.log);
 
 app.get("/", checkAuthenticated, (req, res) => {
-  res.sendFile(__dirname + "/build/index.html");
+  res.redirect("/dashboard?userID=" + req.session.passport.user);
 });
 
 app.get("/login", checkNotAuthenticated, (req, res) => {
