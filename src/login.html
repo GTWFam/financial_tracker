@@ -23,7 +23,10 @@
       type="text/javascript"
       src="./public/scripts/loginMessage.js"
     ></script>
-    <script type="text/javascript" src="./public/scripts/testLogin.js"></script>
+    <script type="module">
+      import { testUser } from "./public/scripts/testLogin.js";
+      document.getElementById("guestLogin").addEventListener("click", testUser);
+    </script>
     <link href="./public/styles/fontawesome/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" href="./public/styles/styles.css" />
     <title>Login - GTWFin</title>
@@ -68,7 +71,7 @@
                   <a style="font-size: large" href=" /register">Sign Up</a>
                 </div>
                 <div class="col-sm-4">
-                  <a onclick="testUser()" class="btn btn-md btn-primary">
+                  <a id="guestLogin" class="btn btn-md btn-primary">
                     Guest Login
                   </a>
                 </div>

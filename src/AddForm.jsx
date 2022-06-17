@@ -10,6 +10,7 @@ import {
   Fade,
 } from "react-bootstrap";
 import { openAddForm } from "./public/scripts/editData";
+import { addEntry } from "./public/scripts/editData";
 
 class AddForm extends React.Component {
   constructor(props) {
@@ -33,7 +34,12 @@ class AddForm extends React.Component {
               className="mb-3 justify-content-md-center text-center"
             >
               <Tab eventKey="transaction" title="Transaction">
-                <Form autoComplete="off" action="/addEntry" method="POST">
+                <Form
+                  id="entryAdd"
+                  autoComplete="off"
+                  action="/addEntry"
+                  method="POST"
+                >
                   <Form.Group className="hidden" controlId="id">
                     <Form.Label>User ID</Form.Label>
                     <Form.Control readOnly name="id"></Form.Control>
@@ -93,7 +99,7 @@ class AddForm extends React.Component {
                   </Form.Group>
                   <Row className="justify-content-md-start mt-3">
                     <Col sm={5}>
-                      <Button variant="primary" type="submit">
+                      <Button variant="primary" onClick={addEntry}>
                         Add Transaction
                       </Button>
                     </Col>

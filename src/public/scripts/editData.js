@@ -1,3 +1,5 @@
+import { gtag } from "./GA";
+
 export async function removeEntry(entry, month) {
   let date = entry.date;
   let from = entry.from;
@@ -5,7 +7,7 @@ export async function removeEntry(entry, month) {
   let category = entry.category;
   const queryString = new URLSearchParams(window.location.search);
   const userID = queryString.get("userID");
-  console.log(userID);
+  gtag("event", "Remove Entry");
   await $.post(
     `/removeEntry?id=${userID}&month=${month}&date=${date}&from=${from}&amount=${amount}&category=${category}`,
     (res) => {
@@ -13,6 +15,11 @@ export async function removeEntry(entry, month) {
     }
   );
   return location.reload();
+}
+
+export async function addEntry() {
+  gtag("event", "Add Transaction");
+  document.getElementById("entryAdd").submit();
 }
 
 export function openAddForm(month) {
